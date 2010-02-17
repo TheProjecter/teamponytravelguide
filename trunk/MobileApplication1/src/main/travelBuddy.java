@@ -8,6 +8,7 @@ import com.sun.lwuit.events.*;
 import com.sun.lwuit.plaf.Border;
 import com.sun.lwuit.plaf.Style;
 import com.sun.lwuit.plaf.UIManager;
+import com.sun.lwuit.util.Resources;
 import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,19 +27,17 @@ public class travelBuddy extends MIDlet implements ActionListener {
     public void startApp() {
             Display.init(this);
             Hashtable themeProps = new Hashtable();
-            themeProps.put("fgColor", "dddddd");
             themeProps.put("SoftButton.fgColor", "0");
-            themeProps.put("Title.fgColor", "0");
+            themeProps.put("Title.fgColor", "ffffff");
             themeProps.put("fgSelectionColor", "ffffff");
             themeProps.put("bgColor", "0");
             themeProps.put("bgSelectionColor", "0");
-            themeProps.put("transparency", "1");
-            themeProps.put("Button.transparency", "13");
-            themeProps.put("border", Border.getEmpty());
+            themeProps.put("transparency", "0");
+            themeProps.put("Button.transparency", "0");
             UIManager.getInstance().setThemeProps(themeProps);
-            Style s = UIManager.getInstance().getComponentStyle("Menu");
-            s.setBgTransparency(255);
-            UIManager.getInstance().setComponentStyle("Menu", s);
+            Style s = UIManager.getInstance().getComponentStyle("menu");
+            UIManager.getInstance().setComponentStyle("menu", s);
+
         try {
             buildMenus();
         } catch (IOException ex) {

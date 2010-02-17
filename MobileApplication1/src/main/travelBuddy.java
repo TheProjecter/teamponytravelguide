@@ -33,7 +33,7 @@ public class travelBuddy extends MIDlet implements ActionListener {
             themeProps.put("bgColor", "0");
             themeProps.put("bgSelectionColor", "0");
             themeProps.put("transparency", "1");
-            themeProps.put("Button.transparency", "130");
+            themeProps.put("Button.transparency", "13");
             themeProps.put("border", Border.getEmpty());
             UIManager.getInstance().setThemeProps(themeProps);
             Style s = UIManager.getInstance().getComponentStyle("Menu");
@@ -45,11 +45,11 @@ public class travelBuddy extends MIDlet implements ActionListener {
             ex.printStackTrace();
         }
 //        try {
-//           // myLocation = new locationService(false);
+//            myLocation = new locationService(false);
 //        } catch (IOException ex) {
 //            ex.printStackTrace();
 //        }
-            //myLocation.start();
+//            myLocation.start();
             myRefreshTask = new RefreshTask();
             myRefreshTimer.schedule(myRefreshTask, 0, 50);
 

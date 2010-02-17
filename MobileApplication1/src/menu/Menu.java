@@ -12,58 +12,55 @@ import java.io.IOException;
 
 import com.sun.lwuit.animations.*;
 import main.travelBuddy;
+import util.Color;
 
 /**
  *
  * @author nialldeasy
  */
 public class Menu {
-
+    int Color_white = 9999999 ,Color_Black = 0;
     travelBuddy m;
     Form f;
+    public Color color = new Color();
     public boolean isActive;
 
     public Menu(String Name, travelBuddy M, String backround) throws IOException {
         m = M;
         f = new Form(Name);
-//        f.setLayout(new GridLayout(10, 2));
-//        f.setScrollable(true);
-//        f.setCyclicFocus(true);
-//       // f.setVisible(true);
-        //  f.setFocusable(true);
         f.setBgImage(Image.createImage("/images/" + backround));
         f.setTransitionOutAnimator(
                 CommonTransitions.createSlide(
                 CommonTransitions.SLIDE_HORIZONTAL, true, 200));
-                
-        isActive=false;
+
+        isActive = false;
+        f.getStyle().setBgTransparency(0);
+
+        f.getSelectedStyle().setBgTransparency(0, true);
 
     }
-      public Menu(String Name, travelBuddy M) throws IOException {
+
+    public Menu(String Name, travelBuddy M) throws IOException {
         m = M;
         f = new Form(Name);
-//        f.setLayout(new GridLayout(10, 2));
-//        f.setScrollable(true);
-//        f.setCyclicFocus(true);
-//       // f.setVisible(true);
-        //  f.setFocusable(true);
         f.setTransitionOutAnimator(
                 CommonTransitions.createSlide(
                 CommonTransitions.SLIDE_HORIZONTAL, true, 200));
 
-        isActive=false;
-
+        isActive = false;
+        f.getStyle().setBgTransparency(0);
+        f.getSelectedStyle().setBgTransparency(0, true);
     }
 
     public void update() {
-        
+
     }
 
     public Component getFocused() {
         return f.getFocused();
     }
 
-    public void addButton(String name, int next, String picture) throws IOException {
+    public void addButton(String name, int next, String picture, int textColor) throws IOException {
         Button a = new Button(Image.createImage("/images/" + picture + "_unsel.png"));
         a.setUIID(name);
         a.setText(name);
@@ -72,14 +69,14 @@ public class Menu {
         a.setTextPosition(Label.BOTTOM);
         a.setFocusable(true);
         a.addActionListener(new ButtonActionListener(m, next));
+        a.setFocusPainted(false);
+        a.getStyle().setFgColor(textColor);
         f.addComponent(a);
-
-
     }
 
     public void show() {
         f.show();
-        isActive=true;
+        isActive = true;
     }
 
     /**
@@ -142,7 +139,7 @@ public class Menu {
 
         public void actionPerformed(ActionEvent evt) {
             m.getMenu(Next).show();
-            isActive=false;
+            isActive = false;
         }
     }
 }

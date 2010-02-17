@@ -22,10 +22,10 @@ public class MainMenu extends Menu {
     }
 
     void addButtons() throws IOException {
-        addButton("Map", 2, "map");
-        addButton("Camera", 1, "camera");
-        addButton("Itinerary", 0, "itinerary");
-        addButton("Xe", 0, "money");
+        addButton("Map", 2, "map",color.White);
+        addButton("Camera", 1, "camera",color.White);
+        addButton("Itinerary", 0, "itinerary",color.White);
+        addButton("Xe", 0, "money",color.White);
        // addButton("Translator", 0, "translate");
     }
     public void update(){
